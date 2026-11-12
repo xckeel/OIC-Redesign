@@ -1,4 +1,5 @@
 import { useState } from "react";
+import oicLogo from "../assets/OIC-Logo.webp";
 import {
   ArrowDown,
   ArrowRight,
@@ -98,16 +99,22 @@ const ArrowLink = ({
   </a>
 );
 
-function Brand() {
+function Brand({ showLogo = false }: { showLogo?: boolean }) {
   return (
     <a className="brand" href="#" aria-label="Oro Integrated Cooperative home">
-      <span className="brand-mark" aria-hidden="true">
-        OIC
-      </span>
-      <span className="brand-name">
-        ORO INTEGRATED
-        <span>COOPERATIVE</span>
-      </span>
+      {showLogo ? (
+        <img alt="" className="brand-logo" src={oicLogo} />
+      ) : (
+        <>
+          <span className="brand-mark" aria-hidden="true">
+            OIC
+          </span>
+          <span className="brand-name">
+            ORO INTEGRATED
+            <span>COOPERATIVE</span>
+          </span>
+        </>
+      )}
     </a>
   );
 }
@@ -147,7 +154,7 @@ function App() {
 
       <header className="relative z-10 bg-paper-white">
         <div className="page-wrap flex h-[70px] items-center justify-between md:h-[82px]">
-          <Brand />
+          <Brand showLogo />
           <button
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
